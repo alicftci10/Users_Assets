@@ -17,5 +17,7 @@ public partial class User
 
     public DateTime CreatedAt { get; set; }
 
-    public int? CreatedBy { get; set; }
+    public int CreatedBy { get; set; }
+
+    public virtual ICollection<Gold> Golds { get; set; } = new List<Gold>();
 }

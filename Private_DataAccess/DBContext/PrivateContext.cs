@@ -17,6 +17,8 @@ public partial class PrivateContext : DbContext
     {
     }
 
+    public virtual DbSet<Gold> Golds { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,6 +32,21 @@ public partial class PrivateContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Gold>(entity =>
+        {
+            entity.ToTable("Gold");
+
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.GoldAmount).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.OneGrGoldPrice).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.Golds)
+                .HasForeignKey(d => d.CreatedBy)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Gold_User");
+        });
+
         modelBuilder.Entity<User>(entity =>
         {
             entity.ToTable("User");

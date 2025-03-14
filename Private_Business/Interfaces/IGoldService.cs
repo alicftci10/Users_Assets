@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Private_Business.Interfaces
 {
-    public interface IUserService
+    public interface IGoldService
     {
-        UserDataModel LoginUser(UserDataModel model);
+        List<GoldDataModel> GetUserGoldList(int pUserId);
 
-        User GetId(int pId);
+        Gold GetId(int pId);
 
-        int Add(UserDataModel item);
+        int Add(GoldDataModel item);
 
-        int Update(UserDataModel item);
+        int Update(GoldDataModel item);
 
-        User Delete(int pId);
+        Gold Delete(int pId);
     }
 }

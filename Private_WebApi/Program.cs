@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Private_Business.Interfaces;
 using Private_Business.Managers;
@@ -70,8 +71,10 @@ namespace Private_WebApi
             //builder.Services.AddTransient<IHomeService, HomeManager>();
 
             builder.Services.AddTransient<IUserService, UserManager>();
+            builder.Services.AddTransient<IGoldService, GoldManager>();
 
             builder.Services.AddTransient<IEFUserRepository, EFUser>();
+            builder.Services.AddTransient<IEFGoldRepository, EFGold>();
 
             builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
 
@@ -81,6 +84,12 @@ namespace Private_WebApi
 
             ConfigurationInfo.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             ConfigurationInfo.ResimFolderUrl = builder.Configuration["ResimFolderUrl"];
+
+            //if (!optionsBuilder.IsConfigured)
+            //{
+            //    string connectionString = ConfigurationInfo.ConnectionString;
+            //    optionsBuilder.UseSqlServer(connectionString);
+            //}
 
             #endregion
 

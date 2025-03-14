@@ -42,10 +42,7 @@ namespace Private_Business.Managers
             item.UserName = model.UserName;
             item.Password = model.Password;
             item.CreatedAt = DateTime.Now;
-            if (model.CreatedBy != null)
-            {
-                item.CreatedBy = model.CreatedBy;
-            }
+            item.CreatedBy = model.CreatedBy.Value;
 
             if (model.Id > 0)
             {

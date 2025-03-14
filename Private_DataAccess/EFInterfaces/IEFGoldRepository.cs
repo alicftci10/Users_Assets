@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Private_DataAccess.EFInterfaces
 {
-    public interface IEFUserRepository : IRepository<User>
+    public interface IEFGoldRepository : IRepository<Gold>
     {
-        User LoginUser(UserDataModel model);
+        List<GoldDataModel> GetUserGoldList(int pUserId);
     }
 }

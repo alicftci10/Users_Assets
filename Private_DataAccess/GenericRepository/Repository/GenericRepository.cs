@@ -15,7 +15,6 @@ namespace Private_DataAccess.GenericRepository.Repository
         private readonly DbSet<T> _dbSet;
         //private IDbContextTransaction _transaction;
 
-
         public GenericRepository(PrivateContext context)
         {
             _context = context;
