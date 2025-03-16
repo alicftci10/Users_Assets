@@ -9,4 +9,5 @@
 
 .maindropdown {
     text-transform: none !important;
+    cursor: pointer;
 }
