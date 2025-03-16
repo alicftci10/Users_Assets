@@ -27,6 +27,7 @@ namespace Private_Business.Managers
             model.Surname = kul.Surname;
             model.UserName = kul.UserName;
             model.Password = kul.Password;
+            model.UserTypeId = kul.UserTypeId;
             model.CreatedAt = kul.CreatedAt;
             model.CreatedBy = kul.CreatedBy;
 
@@ -41,6 +42,7 @@ namespace Private_Business.Managers
             item.Surname = model.Surname;
             item.UserName = model.UserName;
             item.Password = model.Password;
+            item.UserTypeId = model.UserTypeId.Value;
             item.CreatedAt = DateTime.Now;
             item.CreatedBy = model.CreatedBy.Value;
 

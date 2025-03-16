@@ -16,6 +16,8 @@ namespace Private_Entities.DataModels
 
         public string? Password { get; set; }
 
+        public int? UserTypeId { get; set; }
+
         public string? JwtToken { get; set; }
     }
 }

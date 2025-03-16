@@ -1,0 +1,12 @@
+.mainsection {
+    align-items: end;
+    padding: 0px;
+}
+
+.maindropdown:before {
+    content: none !important;
+}
+
+.maindropdown {
+    text-transform: none !important;
+}
