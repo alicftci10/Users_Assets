@@ -2,6 +2,9 @@ import React from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../css/Gold.css'
+import { TiPlus } from "react-icons/ti";
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 function Gold() {
     return (
@@ -12,29 +15,32 @@ function Gold() {
                 <section id="hero" className="hero section dark-background mainsection row">
                     <img src="/src/images/clouds.jpg" alt="" data-aos="fade-in" />
                     <div className="container d-flex flex-column align-items-center">
-                        <div className='table-responsive text-nowrap container' style={{ height: '67vh', top: '20px' }}>
+                        <div className='container table-container'>
                             <table className="table table-dark table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col" style={{ borderRadius: '20px 0 0 0' }}>#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col" style={{ borderRadius: '0 20px 0 0' }}>Handle</th>
+                                        <th scope="col" className='gold-thead-th1'></th>
+                                        <th scope="col" className='gold-thead-th2'>Altın/gr</th>
+                                        <th scope="col" className='gold-thead-th3'>Toplam Fiyat</th>
+                                        <th scope="col" className='gold-thead-th4'>1 Gram Fiyat</th>
+                                        <th scope="col" className='gold-thead-th5'>
+                                            <a href="#" className="btn-get-started table-button">
+                                                <TiPlus className='table-icons1' /> EKLE
+                                            </a>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  >
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
                                     {Array.from({ length: 50 }, (_, index) => (
                                         <tr key={index}>
-                                            <th scope="row">{index + 1}</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
+                                            <td scope="row" className='gold-tbody-td1'>{index + 1}</td>
+                                            <td className='gold-tbody-td2'>Jacob</td>
+                                            <td className='gold-tbody-td3'>Thornton</td>
+                                            <td className='gold-tbody-td4'>@fat</td>
+                                            <td className='gold-tbody-td5'>
+                                                <a href='#' className='table-icons2' ><MdModeEdit /></a>
+                                                <a href='#' className='table-icons3'><MdDelete /></a>
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -44,10 +50,6 @@ function Gold() {
                     <Footer />
                 </section>{/* /Hero Section */}
             </main>
-
-            {/* Scroll Top */}
-            {/* <a href="#" id="scroll-top" className="scroll-top d-flex align-items-center justify-content-center"><i
-                className="bi bi-arrow-up-short"></i></a> */}
         </>
     )
 }
