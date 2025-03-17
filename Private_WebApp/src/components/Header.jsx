@@ -38,9 +38,8 @@ function Header() {
                             {data && data.userTypeId == 1 && <li><a href="/User">Kullanıcılar</a></li>}
                             {/*<li><a href="#portfolio">Portfolio</a></li>
                             <li><a href="#team">Team</a></li>*/}
-                            <li className="dropdown"><a className="cta-btn maindropdown" href="#">{data && data.name + " " + data.surname}</a>
+                            <li className="dropdown"><a className="cta-btn maindropdown" href="/User">{data && data.name + " " + data.surname}</a>
                                 <ul>
-                                    <li><a href="#">Profil</a></li>
                                     <li><a href="#" onClick={handleLogout}>Çıkış</a></li>
                                 </ul>
                             </li>

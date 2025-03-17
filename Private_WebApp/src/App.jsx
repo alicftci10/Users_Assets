@@ -10,6 +10,7 @@ import 'swiper/css';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Gold from './pages/Gold';
+import User from './pages/User';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                     <Route path='/' element={<Home />} />
                     <Route path='/Login' element={<Login />} />
                     <Route path='/Gold' element={<Gold />} />
+                    <Route path='/User' element={<User />} />
                 </Routes>
             </BrowserRouter>
         </>
