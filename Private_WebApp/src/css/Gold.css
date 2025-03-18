@@ -1,6 +1,6 @@
 .table-container {
     top: 40px;
-    opacity: 0.7;
+    opacity: 0.8;
     left: 15px;
 }
 
@@ -12,33 +12,34 @@
 
 .table tbody {
     display: block;
-    max-height: 440px;
+    height: 470px;
     overflow-y: auto;
     width: 100%;
 }
 
 .gold-thead-th1 {
     border-radius: 20px 0 0 0;
-    width: 180px;
+    width: 25px;
     background-color: #81be6e !important;
 }
 
 .gold-thead-th2 {
-    width: 340px;
     background-color: #81be6e !important;
 }
 
 .gold-thead-th3 {
-    width: 340px;
     background-color: #81be6e !important;
 }
 
 .gold-thead-th4 {
-    width: 240px;
     background-color: #81be6e !important;
 }
 
 .gold-thead-th5 {
+    background-color: #81be6e !important;
+}
+
+.gold-thead-th6 {
     border-radius: 0 20px 0 0;
     background-color: #81be6e !important;
 }
@@ -59,36 +60,68 @@
 
 .table-icons2 {
     margin-left: 10px;
-    font-size: 18px;
+    font-size: 20px;
     position: relative;
-    top: -3px;
+    top: -4px;
     color: yellow;
 }
 
 .table-icons3 {
     margin-left: 10px;
-    font-size: 18px;
+    font-size: 20px;
     position: relative;
-    top: -3px;
+    top: -4px;
     color: red;
 }
 
 .gold-tbody-td1 {
-    width: 150px;
+    width: 25px;
 }
 
-.gold-tbody-td2 {
-    width: 280px;
+.table tbody span {
+    position: relative;
+    top: 2px
 }
 
-.gold-tbody-td3 {
-    width: 280px;
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 
-.gold-tbody-td4 {
-    width: 200px;
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.gold-tbody-td5 {
-    width: 150px;
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-close {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 20px;
+}
+
+.buton-modal {
+    padding: 7px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none;
 }

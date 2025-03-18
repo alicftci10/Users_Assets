@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../css/Gold.css'
 import { TiPlus } from "react-icons/ti";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { MdClose } from "react-icons/md";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchGoldData } from '../redux/slices/GoldSlice';
+import { formatDate } from '../utilities/Format';
+import Modal from 'react-modal';
+import { openModal, closeModal } from '../redux/slices/ModalSlice';
 
 function Gold() {
+    const dispatch = useDispatch();
+    const goldList = useSelector((state) => state.Gold.goldData);
+    const isModalOpen = useSelector((state) => state.Modal.isOpen);
+
+    useEffect(() => {
+        dispatch(fetchGoldData());
+    }, [dispatch])
+
     return (
         <>
             <Header />
@@ -17,36 +31,77 @@ function Gold() {
                     <div className="container d-flex flex-column align-items-center">
                         <div className='container table-container'>
                             <table className="table table-dark table-striped">
-                                <thead>
+                                <thead style={{ textAlign: 'center' }}>
                                     <tr>
                                         <th scope="col" className='gold-thead-th1'></th>
-                                        <th scope="col" className='gold-thead-th2'>Altın/gr</th>
-                                        <th scope="col" className='gold-thead-th3'>Toplam Fiyat</th>
-                                        <th scope="col" className='gold-thead-th4'>1 Gram Fiyat</th>
-                                        <th scope="col" className='gold-thead-th5'>
-                                            <a href="#" className="btn-get-started table-button">
+                                        <th scope="col" className='gold-thead-th2'>ALTIN/GR</th>
+                                        <th scope="col" className='gold-thead-th3'>TOPLAM FİYAT</th>
+                                        <th scope="col" className='gold-thead-th4'>1 GRAM FİYAT</th>
+                                        <th scope="col" className='gold-thead-th5'>TARİH</th>
+                                        <th scope="col" className='gold-thead-th6'>
+                                            <a href="#" className="btn-get-started table-button fw-bold" onClick={() => dispatch(openModal())}>
                                                 <TiPlus className='table-icons1' /> EKLE
                                             </a>
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    {Array.from({ length: 50 }, (_, index) => (
-                                        <tr key={index}>
-                                            <td scope="row" className='gold-tbody-td1'>{index + 1}</td>
-                                            <td className='gold-tbody-td2'>Jacob</td>
-                                            <td className='gold-tbody-td3'>Thornton</td>
-                                            <td className='gold-tbody-td4'>@fat</td>
-                                            <td className='gold-tbody-td5'>
-                                                <a href='#' className='table-icons2' ><MdModeEdit /></a>
-                                                <a href='#' className='table-icons3'><MdDelete /></a>
-                                            </td>
-                                        </tr>
-                                    ))}
+                                <tbody style={{ textAlign: 'center' }}>
+                                    {
+                                        goldList.length > 0 ? goldList.map((item, index) => (
+                                            <tr key={item.id}>
+                                                <td scope="row" className='gold-tbody-td1'><span>{index + 1}</span></td>
+                                                <td><span>{item.goldAmount}</span></td>
+                                                <td><span>{item.price}</span></td>
+                                                <td><span>{item.oneGrGoldPrice}</span></td>
+                                                <td><span>{formatDate(item.createdAt)}</span></td>
+                                                <td>
+                                                    <a href='#' className='table-icons2'><MdModeEdit /></a>
+                                                    <a href='#' className='table-icons3'><MdDelete /></a>
+                                                </td>
+                                            </tr>
+                                        ))
+                                            :
+                                            <tr scope="row" style={{ textAlign: 'center' }}>
+                                                <td colSpan={6}>Gösterilecek veri bulunamadı!!</td>
+                                            </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
                     </div>
+
+                    {/* Modal */}
+                    <Modal
+                        isOpen={isModalOpen}
+                        onRequestClose={() => dispatch(closeModal())}
+                        contentLabel="Yeni Altın Ekle"
+                        className="modal-content"
+                        overlayClassName="modal-overlay"
+                        ariaHideApp={false}
+                    >
+                        <div className="modal-header">
+                            <h5 className="modal-title">Altın Ekle</h5>
+                            <MdClose className='btn-close' onClick={() => dispatch(closeModal())} />
+                        </div>
+                        <div className="modal-body">
+                            {/* Modal İçeriği */}
+                            <form>
+                                <div className="mb-3">
+                                    <label className="form-label">Altın Miktarı</label>
+                                    <input type="number" className="form-control" id="goldAmount" />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">Toplam Fiyat</label>
+                                    <input type="number" className="form-control" id="price" />
+                                </div>
+                            </form>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-danger buton-modal" style={{ backgroundColor: '#dc3545' }} onClick={() => dispatch(closeModal())}>Kapat</button>
+                            <button type="button" className="btn btn-secondary buton-modal" style={{ backgroundColor: '#6c757d' }}>Kaydet</button>
+                        </div>
+                    </Modal>
+
                     <Footer />
                 </section>{/* /Hero Section */}
             </main>

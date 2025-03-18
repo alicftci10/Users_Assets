@@ -17,9 +17,9 @@ namespace Private_WebApi.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult GetUserGoldList(int pUserId)
+        public IActionResult GetUserGoldList()
         {
-            return Ok(_gold.GetUserGoldList(pUserId));
+            return Ok(_gold.GetUserGoldList(GetCurrentUser(HttpContext).Id));
         }
 
         [HttpGet]

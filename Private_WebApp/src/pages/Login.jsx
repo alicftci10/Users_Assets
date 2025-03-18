@@ -48,7 +48,7 @@ function Login() {
     return (
         <div className="signup">
             <div className="signup-classic">
-                <h2>Kişisel Uygulama</h2>
+                <h2 className="fw-bold">Kişisel Uygulama</h2>
                 <form onSubmit={handleSubmit(userLogin)} className="form">
                     <fieldset className="username">
                         <input type="text" placeholder="Kullanıcı Adı" {...register("UserName", {

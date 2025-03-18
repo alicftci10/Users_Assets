@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 function Loading() {
 
-    const { loading } = useSelector((store) => store.Login)
+    const { loading } = useSelector((store) => store.Loading)
 
     return (
         <Backdrop
