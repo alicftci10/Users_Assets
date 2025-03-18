@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../css/Gold.css'
@@ -11,15 +12,34 @@ import { fetchGoldData } from '../redux/slices/GoldSlice';
 import { formatDate } from '../utilities/Format';
 import Modal from 'react-modal';
 import { openModal, closeModal } from '../redux/slices/ModalSlice';
+import axios from "axios";
 
 function Gold() {
     const dispatch = useDispatch();
     const goldList = useSelector((state) => state.Gold.goldData);
     const isModalOpen = useSelector((state) => state.Modal.isOpen);
+    const selectedId = useSelector((state) => state.Modal.selectedId);
+    const [goldIdData, setGoldIdData] = useState(null);
+    const data = JSON.parse(localStorage.getItem('userData'))
 
     useEffect(() => {
         dispatch(fetchGoldData());
     }, [dispatch])
+
+    useEffect(() => {
+        if (selectedId) {
+            getGoldId();
+        }
+    }, [selectedId]);
+
+    const getGoldId = async () => {
+        const response = await axios.get(`https://localhost:7087/api/GoldApi/GetGold?pId=${selectedId}`, {
+            headers: {
+                Authorization: `Bearer ${data.jwtToken}`
+            }
+        })
+        setGoldIdData(response.data);
+    };
 
     return (
         <>
@@ -55,7 +75,7 @@ function Gold() {
                                                 <td><span>{item.oneGrGoldPrice}</span></td>
                                                 <td><span>{formatDate(item.createdAt)}</span></td>
                                                 <td>
-                                                    <a href='#' className='table-icons2'><MdModeEdit /></a>
+                                                    <a href='#' className='table-icons2' onClick={() => dispatch(openModal(item.id))}><MdModeEdit /></a>
                                                     <a href='#' className='table-icons3'><MdDelete /></a>
                                                 </td>
                                             </tr>
@@ -87,12 +107,12 @@ function Gold() {
                             {/* Modal İçeriği */}
                             <form>
                                 <div className="mb-3">
-                                    <label className="form-label">Altın Miktarı</label>
-                                    <input type="number" className="form-control" id="goldAmount" />
+                                    <label className="form-label">Altın Miktarı (Gr)</label>
+                                    <input type="number" value={goldIdData?.goldAmount || ""} className="form-control bg-dark text-white" id="goldAmount" />
                                 </div>
                                 <div className="mb-3">
-                                    <label className="form-label">Toplam Fiyat</label>
-                                    <input type="number" className="form-control" id="price" />
+                                    <label className="form-label">Toplam Fiyat (TL)</label>
+                                    <input type="number" value={goldIdData?.price || ""} className="form-control bg-dark text-white" id="price" />
                                 </div>
                             </form>
                         </div>
