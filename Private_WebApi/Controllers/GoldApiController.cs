@@ -42,8 +42,6 @@ namespace Private_WebApi.Controllers
         [Authorize]
         public IActionResult Update([FromBody] GoldDataModel model)
         {
-            model.CreatedBy = GetCurrentUser(HttpContext).Id;
-
             return Ok(_gold.Update(model));
         }
 

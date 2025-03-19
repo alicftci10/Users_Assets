@@ -25,12 +25,16 @@ namespace Private_Business.Managers
             item.GoldAmount = model.GoldAmount.Value;
             item.Price = model.Price.Value;
             item.OneGrGoldPrice = model.OneGrGoldPrice.Value;
-            item.CreatedAt = DateTime.Now;
             item.CreatedBy = model.CreatedBy.Value;
 
             if (model.Id > 0)
             {
                 item.Id = model.Id;
+                item.CreatedAt = model.CreatedAt.Value;
+            }
+            else
+            {
+                item.CreatedAt = DateTime.Now;
             }
 
             return item;

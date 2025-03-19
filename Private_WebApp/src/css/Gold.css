@@ -126,3 +126,14 @@
     border-radius: 5px;
     border: none;
 }
+
+.invalid-feedback {
+    position: absolute;
+    font-size: 14px;
+    color: red;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 40px;
+}
