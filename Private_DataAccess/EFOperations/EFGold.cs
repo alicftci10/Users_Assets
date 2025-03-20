@@ -19,7 +19,7 @@ namespace Private_DataAccess.EFOperations
         {
             using (PrivateContext db = new PrivateContext())
             {
-                var userGoldList = db.Golds.Where(i => i.CreatedBy == pUserId).Select(i => new GoldDataModel
+                var userGoldList = db.Golds.OrderByDescending(i=>i.CreatedAt).ThenByDescending(i=>i.Id).Where(i => i.CreatedBy == pUserId).Select(i => new GoldDataModel
                 {
                     Id = i.Id,
                     GoldAmount = i.GoldAmount,

@@ -12,6 +12,7 @@ export const getGoldId = async (goldApiUrl, selectedId, setGoldIdData, setValue,
     setGoldIdData(response.data);
     setValue("goldAmount", response.data.goldAmount);
     setValue("price", response.data.price);
+    setValue("createdAt", response.data.createdAt);
 };
 
 // Ekleme ve güncelleme işlemi

@@ -38,7 +38,6 @@ public partial class PrivateContext : DbContext
         {
             entity.ToTable("Gold");
 
-            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.GoldAmount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.OneGrGoldPrice).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");

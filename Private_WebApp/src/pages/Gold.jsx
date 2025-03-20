@@ -30,8 +30,10 @@ function Gold() {
         if (selectedId) {
             getGoldId(goldApiUrl, selectedId, setGoldIdData, setValue, data);
         } else {
+            setGoldIdData(null);
             setValue("goldAmount", null);
             setValue("price", null);
+            setValue("createdAt", null);
         }
     }, [selectedId]);
 
@@ -145,6 +147,20 @@ function Gold() {
                                         id="price"
                                     />
                                     {errors.price && <div className="invalid-feedback">{errors.price.message}</div>}
+                                </div>
+
+                                {/* Tarih */}
+                                <div className="form-group">
+                                    <label className="form-label">Tarih</label>
+                                    <input
+                                        type="date"
+                                        {...register("createdAt", {
+                                            required: "Tarih boş bırakılamaz."
+                                        })}
+                                        className={`form-control bg-dark text-white ${errors.createdAt ? "is-invalid" : ""}`}
+                                        id="createdAt"
+                                    />
+                                    {errors.createdAt && <div className="invalid-feedback">{errors.createdAt.message}</div>}
                                 </div>
 
                                 <div className="modal-footer">

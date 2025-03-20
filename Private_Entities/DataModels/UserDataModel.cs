@@ -18,6 +18,8 @@ namespace Private_Entities.DataModels
 
         public int? UserTypeId { get; set; }
 
+        public DateTime? CreatedAt { get; set; }
+
         public string? JwtToken { get; set; }
     }
 }
