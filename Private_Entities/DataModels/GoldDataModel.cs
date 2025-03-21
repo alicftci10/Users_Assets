@@ -13,9 +13,5 @@ namespace Private_Entities.DataModels
         public decimal? Price { get; set; }
 
         public decimal? OneGrGoldPrice { get; set; }
-
-        public decimal? TotalGoldAmount { get; set; }
-
-        public decimal? TotalPrice { get; set; }
     }
 }

@@ -53,6 +53,17 @@ function Home() {
                                     }
                                 </div>
                             </div>
+                            <div className='row justify-content-center'>
+                                <div className="alert alert-primary text-center" role="alert">
+                                    <div className='col-md-12'>
+                                        <span className='fw-bold'>USD</span>
+                                    </div>
+                                    <br />
+                                    <div className='col-md-3'>
+                                        sa
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <Footer />
