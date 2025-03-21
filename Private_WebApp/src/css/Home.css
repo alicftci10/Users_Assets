@@ -11,3 +11,7 @@
     text-transform: none !important;
     cursor: pointer;
 }
+
+.alert-container {
+    height: 60vh;
+}

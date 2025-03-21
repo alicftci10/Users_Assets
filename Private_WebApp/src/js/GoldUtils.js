@@ -20,8 +20,6 @@ export const AddUpdate = async (model, goldApiUrl, goldIdData, dispatch, data) =
     model.oneGrGoldPrice = model.price / model.goldAmount;
     if (goldIdData) {
         model.id = goldIdData.id;
-        model.createdAt = goldIdData.createdAt;
-        model.createdBy = goldIdData.createdBy;
         await axios.put(`${goldApiUrl}Update`, model, {
             headers: {
                 Authorization: `Bearer ${data.jwtToken}`
