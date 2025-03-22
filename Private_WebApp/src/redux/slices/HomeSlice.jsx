@@ -18,7 +18,6 @@ export const getHomeGoldList = createAsyncThunk("Home/getHomeGoldList", async (c
             Authorization: `Bearer ${data.jwtToken}`
         }
     });
-
     return response.data;
 });
 
@@ -26,7 +25,7 @@ export const HomeSlice = createSlice({
     name: "Home",
     initialState: {
         currencyData: {},
-        goldData: {}
+        goldData: []
     },
     reducers: {
 

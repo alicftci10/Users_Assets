@@ -10,7 +10,7 @@ function Home() {
 
     const dispatch = useDispatch();
     const currencyData = useSelector((state) => state.Home.currencyData);
-    const goldData = useSelector((state) => state.Home.goldData)
+    const goldData = useSelector((state) => state.Home.goldData);
 
     useEffect(() => {
         dispatch(getCurrencyData());
@@ -171,20 +171,28 @@ function Home() {
                                             <span className='span-weight-gold'>Toplam Maliyet</span>
                                             <br />
                                             {goldData?.totalCost &&
-                                                goldData.totalCost <= 0 ?
-                                                <span style={{ color: 'green' }}>{formatCurrency(-goldData.totalCost)} ₺</span>
-                                                :
-                                                <span style={{ color: 'red' }}>{formatCurrency(goldData.totalCost)} ₺</span>
+                                                <>
+                                                    {
+                                                        goldData.totalCost <= 0 ?
+                                                            <span style={{ color: 'green' }}>{formatCurrency(-goldData.totalCost)} ₺</span>
+                                                            :
+                                                            <span style={{ color: 'red' }}>{formatCurrency(goldData.totalCost)} ₺</span>
+                                                    }
+                                                </>
                                             }
                                         </div>
                                         <div className='col-md-2'>
                                             <span className='span-weight-gold'>Toplam Kar/Zarar</span>
                                             <br />
                                             {goldData?.currentProfitorLoss &&
-                                                goldData.currentProfitorLoss >= 0 ?
-                                                <span style={{ color: 'green' }}>{formatCurrency(goldData.currentProfitorLoss)} ₺</span>
-                                                :
-                                                <span style={{ color: 'red' }}>{formatCurrency(-goldData.currentProfitorLoss)} ₺</span>
+                                                <>
+                                                    {
+                                                        goldData.currentProfitorLoss >= 0 ?
+                                                            <span style={{ color: 'green' }}>{formatCurrency(goldData.currentProfitorLoss)} ₺</span>
+                                                            :
+                                                            <span style={{ color: 'red' }}>{formatCurrency(-goldData.currentProfitorLoss)} ₺</span>
+                                                    }
+                                                </>
                                             }
                                         </div>
                                     </div>
