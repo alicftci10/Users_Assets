@@ -15,3 +15,21 @@
 .alert-container {
     height: 60vh;
 }
+
+.alert-container,
+.alert-container h1,
+.alert-container h2,
+.alert-container h3,
+.alert-container h4,
+.alert-container h5,
+.alert-container h6 {
+    font-weight: bold;
+}
+
+.span-weight-currency {
+    font-size: 20px;
+}
+
+.span-weight-gold {
+    font-size: 18px;
+}

@@ -12,12 +12,16 @@ namespace Private_Entities.DataModels
 
         public GoldDataModel? getGold { get; set; }
 
-        public decimal? totalGoldValue { get; set; }
+        public decimal? currentGoldValue { get; set; }
 
-        public decimal? totalGoldPrice { get; set; }
+        public decimal? currentGoldPrice { get; set; }
+
+        public decimal? totalGoldBuyingPrice { get; set; }
+
+        public decimal? totalGoldSellingPrice { get; set; }
 
         public decimal? totalCost { get; set; }
 
-        public decimal? totalProfit { get; set; }
+        public decimal? currentProfitorLoss { get; set; }
     }
 }

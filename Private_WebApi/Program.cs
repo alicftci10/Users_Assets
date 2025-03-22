@@ -68,7 +68,7 @@ namespace Private_WebApi
             builder.Services.AddDbContext<PrivateContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            //builder.Services.AddTransient<IHomeService, HomeManager>();
+            builder.Services.AddTransient<IHomeService, HomeManager>();
 
             builder.Services.AddTransient<IUserService, UserManager>();
             builder.Services.AddTransient<IGoldService, GoldManager>();

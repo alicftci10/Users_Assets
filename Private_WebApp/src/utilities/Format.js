@@ -7,5 +7,10 @@ export const formatDate = (dateString) => {
 };
 
 export const formatCurrency = (value) => {
-    return value ? Number(value).toFixed(2) : "Yükleniyor...";
+    if (value) {
+        return Number(value)
+            .toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    } else {
+        return "Yükleniyor...";
+    }
 };

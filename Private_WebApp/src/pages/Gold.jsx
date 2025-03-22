@@ -7,7 +7,7 @@ import { TiPlus } from "react-icons/ti";
 import { MdModeEdit, MdDelete, MdClose } from "react-icons/md";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchGoldData } from '../redux/slices/GoldSlice';
-import { formatDate } from '../utilities/Format';
+import { formatDate, formatCurrency } from '../utilities/Format.js';
 import Modal from 'react-modal';
 import { getGoldId, AddUpdate, Delete, openAddModal, openUpdateModal, closeAddModal, openDeleteConfirmation, closeDeleteConfirmation } from '../js/GoldUtils';
 
@@ -83,9 +83,9 @@ function Gold() {
                                         goldList.length > 0 ? goldList.map((item, index) => (
                                             <tr key={item.id}>
                                                 <td scope="row" className='gold-tbody-td1'><span>{index + 1}</span></td>
-                                                <td><span>{item.goldAmount}</span></td>
-                                                <td><span>{item.price}</span></td>
-                                                <td><span>{item.oneGrGoldPrice}</span></td>
+                                                <td><span>{formatCurrency(item.goldAmount)}</span></td>
+                                                <td><span>{formatCurrency(item.price)}</span></td>
+                                                <td><span>{formatCurrency(item.oneGrGoldPrice)}</span></td>
                                                 <td><span>{formatDate(item.createdAt)}</span></td>
                                                 <td>
                                                     <a href='#' className='table-icons2' onClick={() => openUpdateModal(dispatch, item.id)}><MdModeEdit /></a>
