@@ -27,5 +27,29 @@ namespace Private_DataAccess.EFOperations
                 return new User();
             }
         }
+
+        public List<UserDataModel> GetUserList()
+        {
+            using (PrivateContext db = new PrivateContext())
+            {
+                var user = db.Users.Select(i=>new UserDataModel
+                {
+                    Id = i.Id,
+                    Name = i.Name,
+                    Surname = i.Surname,
+                    UserName = i.UserName,
+                    Password = i.Password,
+                    UserTypeId = i.UserTypeId,
+                    CreatedAt = i.CreatedAt,
+                    CreatedBy = i.CreatedBy
+
+                }).ToList();
+
+                if (user != null)
+                    return user;
+
+                return new List<UserDataModel>();
+            }
+        }
     }
 }

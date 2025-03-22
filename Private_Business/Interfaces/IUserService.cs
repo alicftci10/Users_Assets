@@ -12,6 +12,8 @@ namespace Private_Business.Interfaces
     {
         UserDataModel LoginUser(UserDataModel model);
 
+        List<UserDataModel> GetUserList();
+
         User GetId(int pId);
 
         int Add(UserDataModel item);

@@ -9,6 +9,7 @@ namespace Private_Entities.DataModels
     public abstract class BaseDataModel
     {
         public int Id { get; set; }
+
         public DateOnly? CreatedAt { get; set; }
 
         public int? CreatedBy { get; set; }

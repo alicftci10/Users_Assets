@@ -9,8 +9,8 @@ namespace Private_WebApi.Controllers
     [ApiController]
     public class HomeApiController : BaseApiController
     {
-        IHomeService _homeService;
-        IGoldService _goldService;
+        private readonly IHomeService _homeService;
+        private readonly IGoldService _goldService;
 
         public HomeApiController(IHomeService homeService, IGoldService goldService)
         {
@@ -26,7 +26,7 @@ namespace Private_WebApi.Controllers
 
             model.goldList = _goldService.GetUserGoldList(GetCurrentUser(HttpContext).Id);
 
-            return Ok(_homeService.getHomeGoldList(currentGoldSelling,model));
+            return Ok(_homeService.getHomeGoldList(currentGoldSelling, model));
         }
     }
 }

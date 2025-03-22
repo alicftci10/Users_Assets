@@ -12,5 +12,7 @@ namespace Private_DataAccess.EFInterfaces
     public interface IEFUserRepository : IRepository<User>
     {
         User LoginUser(UserDataModel model);
+
+        List<UserDataModel> GetUserList();
     }
 }

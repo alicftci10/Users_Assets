@@ -43,15 +43,24 @@ namespace Private_Business.Managers
             item.UserName = model.UserName;
             item.Password = model.Password;
             item.UserTypeId = model.UserTypeId.Value;
-            item.CreatedAt = DateTime.Now;
             item.CreatedBy = model.CreatedBy.Value;
 
             if (model.Id > 0)
             {
                 item.Id = model.Id;
+                item.CreatedAt = model.CreatedAt.Value;
+            }
+            else
+            {
+                item.CreatedAt = DateTime.Now;
             }
 
             return item;
+        }
+
+        public List<UserDataModel> GetUserList()
+        {
+            return _UserRepository.GetUserList();
         }
 
         public User GetId(int pId)

@@ -9,17 +9,17 @@ namespace Private_WebApi.Controllers
     [ApiController]
     public class LoginApiController : BaseApiController
     {
-        private readonly IUserService _User;
-        public LoginApiController(IUserService User)
+        private readonly IUserService _userService;
+        public LoginApiController(IUserService userService)
         {
-            _User = User;
+            _userService = userService;
         }
 
         [HttpPost]
         [AllowAnonymous]
         public IActionResult LoginUser([FromBody] UserDataModel model)
         {
-            var user = _User.LoginUser(model);
+            var user = _userService.LoginUser(model);
 
             if (user.Id > 0)
             {

@@ -108,7 +108,7 @@ function Gold() {
                         isOpen={isModalOpen}
                         onRequestClose={() => closeAddModal(dispatch)}
                         contentLabel="Yeni Altın Ekle"
-                        className="modal-content"
+                        className="modal-content-gold"
                         overlayClassName="modal-overlay"
                         ariaHideApp={false}
                     >
@@ -181,7 +181,7 @@ function Gold() {
                         isOpen={isDeleteModalOpen}
                         onRequestClose={() => closeDeleteConfirmation(dispatch)}
                         contentLabel="Delete İşlemi"
-                        className="modal-content"
+                        className="modal-content-delete"
                         overlayClassName="modal-overlay"
                         ariaHideApp={false}
                     >

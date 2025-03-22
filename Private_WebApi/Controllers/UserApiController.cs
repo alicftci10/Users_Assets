@@ -7,51 +7,51 @@ namespace Private_WebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class GoldApiController : BaseApiController
+    public class UserApiController : BaseApiController
     {
-        private readonly IGoldService _goldService;
-        public GoldApiController(IGoldService goldService)
+        private readonly IUserService _userService;
+        public UserApiController(IUserService userService)
         {
-            _goldService = goldService;
+            _userService = userService;
         }
 
         [HttpGet]
         [Authorize]
-        public IActionResult GetUserGoldList()
+        public IActionResult GetUserList()
         {
-            return Ok(_goldService.GetUserGoldList(GetCurrentUser(HttpContext).Id));
+            return Ok(_userService.GetUserList());
         }
 
         [HttpGet]
         [Authorize]
-        public IActionResult GetGold(int pId)
+        public IActionResult GetUser(int pId)
         {
-            return Ok(_goldService.GetId(pId));
+            return Ok(_userService.GetId(pId));
         }
 
         [HttpPost]
         [Authorize]
-        public IActionResult Add([FromBody] GoldDataModel model)
+        public IActionResult Add([FromBody] UserDataModel model)
         {
             model.CreatedBy = GetCurrentUser(HttpContext).Id;
 
-            return Ok(_goldService.Add(model));
+            return Ok(_userService.Add(model));
         }
 
         [HttpPut]
         [Authorize]
-        public IActionResult Update([FromBody] GoldDataModel model)
+        public IActionResult Update([FromBody] UserDataModel model)
         {
             model.CreatedBy = GetCurrentUser(HttpContext).Id;
 
-            return Ok(_goldService.Update(model));
+            return Ok(_userService.Update(model));
         }
 
         [HttpDelete]
         [Authorize]
         public IActionResult Delete(int pId)
         {
-            return Ok(_goldService.Delete(pId));
+            return Ok(_userService.Delete(pId));
         }
     }
 }
