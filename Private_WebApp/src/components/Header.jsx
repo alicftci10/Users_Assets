@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-
 function Header() {
 
     const dispatch = useDispatch();
@@ -38,7 +37,7 @@ function Header() {
                             {data && data.userTypeId == 1 && <li><a href="/User">Kullanıcılar</a></li>}
                             {/*<li><a href="#portfolio">Portfolio</a></li>
                             <li><a href="#team">Team</a></li>*/}
-                            <li className="dropdown"><a className="cta-btn maindropdown" href="/User">{data && data.name + " " + data.surname}</a>
+                            <li className="dropdown"><span className="cta-btn maindropdown fw-bold">{data && data.name + " " + data.surname}</span>
                                 <ul>
                                     <li><a href="#" onClick={handleLogout}>Çıkış</a></li>
                                 </ul>

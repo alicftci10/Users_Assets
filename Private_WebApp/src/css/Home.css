@@ -9,7 +9,7 @@
 
 .maindropdown {
     text-transform: none !important;
-    cursor: pointer;
+    cursor: default;
 }
 
 .alert-container {
