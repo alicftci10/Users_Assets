@@ -14,10 +14,6 @@ namespace Private_Entities.DataModels
 
         public int? CreatedBy { get; set; }
 
-        public bool IsSuccess { get; set; }
-
         public string? CreatedByFullName { get; set; }
-
-        public int? Count { get; set; }
     }
 }
