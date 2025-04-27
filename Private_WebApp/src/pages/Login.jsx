@@ -29,7 +29,6 @@ function Login() {
             const response = await dispatch(LoginUser(data)).unwrap();
             if (response && response.id > 0) {
                 navigate("/")
-
             }
             else {
                 setError("Password", {
